@@ -25,12 +25,10 @@
   
     document.body.appendChild(toast);
   
-    // anima o fade-in
     requestAnimationFrame(() => {
       toast.style.opacity = "1";
     });
   
-    // remove após 4 segundos
     setTimeout(() => {
       toast.style.opacity = "0";
       toast.addEventListener("transitionend", () => toast.remove());
@@ -58,13 +56,10 @@
       if (!textarea.dataset.listenerAdded) {
         textarea.dataset.listenerAdded = "true";
 
-        // Chave única para o storage
         const storageKey = `draft-${getCleanUrl()}-${index}`;
 
-        // Carregar o valor salvo de chrome.storage
         chrome.storage.local.get([storageKey], (result) => {
           if (result[storageKey]) {
-            // Coloca o valor no clipboard
             navigator.clipboard.writeText(result[storageKey])
               .then(() => {
                 if (!sessionStorage.getItem("duo-saver-toast-shown")) {
@@ -80,11 +75,9 @@
 
         let debounceTimeout;
 
-        // Adiciona o evento de input com debounce
         textarea.addEventListener('input', (e) => {
           clearTimeout(debounceTimeout);
           debounceTimeout = setTimeout(() => {
-            // Salva o valor no chrome.storage
             chrome.storage.local.set({ [storageKey]: e.target.value }, () => {
               console.log('Rascunho salvo com chrome.storage.local');
             });

@@ -7,14 +7,19 @@
     "tabs",
     "activeTab",
     "scripting",
-    "storage"
+    "storage",
+    "alarms"
   ],
-  "action": {
-    "default_popup": "src/popup/index.html"
+  "host_permissions": [
+    "https://duotalk.com.br/*"
+  ],
+  "background": {
+    "service_worker": "src/background/index.js",
+    "type": "module"
   },
   "content_scripts": [
     {
-      "matches": ["https://*.example.com/*"],
+      "matches": ["https://duotalk.com.br/*"],
       "js": ["src/content/index.js"],
       "run_at": "document_idle"
     }

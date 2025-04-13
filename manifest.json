@@ -11,7 +11,8 @@
     "alarms"
   ],
   "host_permissions": [
-    "https://duotalk.com.br/*"
+    "https://duotalk.com.br/*",
+    "https://app.duotalk.io/*"
   ],
   "background": {
     "service_worker": "src/background/index.js",
@@ -19,7 +20,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://duotalk.com.br/*"],
+      "matches": ["https://duotalk.com.br/*", "https://app.duotalk.io/*"],
       "js": ["src/content/index.js"],
       "run_at": "document_idle"
     }

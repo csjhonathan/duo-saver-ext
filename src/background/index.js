@@ -1,5 +1,5 @@
 const setAlarm = () => {
-  chrome.alarms.create('myAlarm', { periodInMinutes: 1 / 60 }); // a cada 30 segundos
+  chrome.alarms.create('myAlarm', { periodInMinutes: 1 / 60 });
   console.log('Alarme criado!');
 
   chrome.alarms.getAll((alarms) => {
@@ -13,7 +13,7 @@ chrome.runtime.onStartup.addListener(setAlarm);
 
 chrome.alarms.onAlarm.addListener((alarm) => {
   if (alarm.name === 'myAlarm') {
-    chrome.tabs.query({ url: '*://duotalk.com.br/*' }, (tabs) => {
+    chrome.tabs.query({ url: '*://app.duotalk.io/*' }, (tabs) => {
       for (const tab of tabs) {
         if (tab.id) {
           chrome.scripting.executeScript({

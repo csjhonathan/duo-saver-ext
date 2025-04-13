@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Duo Saver Extension",
+  "version": "0.1",
+  "description": "WIP",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "action": {
+    "default_popup": "src/popup/index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.example.com/*"],
+      "js": ["src/content/index.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
